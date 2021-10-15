@@ -1,0 +1,10 @@
+=== Agent Install Log ===
+=== Agent Compile Log ===
+=== Agent Error Log ===
+Traceback (most recent call last):
+  File "C:\Users\caden\Desktop\python\simple\main.py", line 32, in <module>
+    actions = agent(observation, None)
+  File "C:\Users\caden\Desktop\python\simple\agent.py", line 65, in agent
+    if unit.is_worker() and unit.can_act() and not buildCity:
+UnboundLocalError: local variable 'buildCity' referenced before assignment
+Agent timed out

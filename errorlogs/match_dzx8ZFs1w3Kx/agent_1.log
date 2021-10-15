@@ -1,0 +1,10 @@
+=== Agent Install Log ===
+=== Agent Compile Log ===
+=== Agent Error Log ===
+Traceback (most recent call last):
+  File "C:\Users\caden\Desktop\Lux-Design-2021-master\Lux-Design-2021-master\kits\python\simple\main.py", line 32, in <module>
+    actions = agent(observation, None)
+  File "C:\Users\caden\Desktop\Lux-Design-2021-master\Lux-Design-2021-master\kits\python\simple\agent.py", line 48, in agent
+    if not os.path.exsists('/kaggle'):
+AttributeError: module 'ntpath' has no attribute 'exsists'. Did you mean: 'exists'?
+Agent timed out

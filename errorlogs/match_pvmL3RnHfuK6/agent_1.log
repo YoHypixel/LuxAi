@@ -1,0 +1,10 @@
+=== Agent Install Log ===
+=== Agent Compile Log ===
+=== Agent Error Log ===
+Traceback (most recent call last):
+  File "C:\Users\caden\Desktop\python\simple\main.py", line 32, in <module>
+    actions = agent(observation, None)
+  File "C:\Users\caden\Desktop\python\simple\agent.py", line 131, in agent
+    if get_city_lowes_fuel(player) > 300:
+TypeError: '>' not supported between instances of 'builtin_function_or_method' and 'int'
+Agent timed out

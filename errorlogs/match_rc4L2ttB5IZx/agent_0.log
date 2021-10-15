@@ -1,0 +1,12 @@
+=== Agent Install Log ===
+=== Agent Compile Log ===
+=== Agent Error Log ===
+Traceback (most recent call last):
+  File "C:\Users\caden\Desktop\python\simple\main.py", line 32, in <module>
+    actions = agent(observation, None)
+  File "C:\Users\caden\Desktop\python\simple\agent.py", line 132, in agent
+    if unit.can_build(game_map=game_map):
+  File "C:\Users\caden\Desktop\python\simple\lux\game_objects.py", line 107, in can_build
+    cell = game_map.get_cell_by_pos(self.pos)
+AttributeError: module 'lux.game_map' has no attribute 'get_cell_by_pos'
+Agent timed out

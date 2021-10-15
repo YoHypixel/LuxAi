@@ -1,0 +1,12 @@
+=== Agent Install Log ===
+=== Agent Compile Log ===
+=== Agent Error Log ===
+Traceback (most recent call last):
+  File "C:\Users\caden\Documents\GitHub\LuxAi\main.py", line 32, in <module>
+    actions = agent(observation, None)
+  File "C:\Users\caden\Documents\GitHub\LuxAi\agent.py", line 139, in agent
+    if get_city_lowes_fuel(player) > 300:
+  File "C:\Users\caden\Documents\GitHub\LuxAi\agent.py", line 92, in get_city_lowes_fuel
+    return fuel[0]
+IndexError: list index out of range
+Agent timed out

@@ -1,0 +1,10 @@
+=== Agent Install Log ===
+=== Agent Compile Log ===
+=== Agent Error Log ===
+Traceback (most recent call last):
+  File "C:\Users\caden\Desktop\python\simple\main.py", line 32, in <module>
+    actions = agent(observation, None)
+  File "C:\Users\caden\Desktop\python\simple\agent.py", line 53, in agent
+    game_state.player.research_points += 1
+AttributeError: 'Game' object has no attribute 'player'. Did you mean: 'players'?
+Agent timed out

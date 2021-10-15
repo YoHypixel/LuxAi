@@ -1,0 +1,10 @@
+=== Agent Install Log ===
+=== Agent Compile Log ===
+=== Agent Error Log ===
+Traceback (most recent call last):
+  File "C:\Users\caden\Documents\GitHub\LuxAi\main.py", line 32, in <module>
+    actions = agent(observation, None)
+  File "C:\Users\caden\Documents\GitHub\LuxAi\agent.py", line 170, in agent
+    if not lne(player.units) % 2 == 0:
+NameError: name 'lne' is not defined
+Agent timed out

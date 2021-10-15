@@ -74,11 +74,13 @@ def get_closes_empty_tile(unit, empty_tiles, player):
 def get_city_lowes_fuel(player):
     fuel = []
     for k, city in player.cities.items():
-        fuel.append(city.fuel)
+        city.fuel
 
     fuel.sort()
-
-    return fuel[0]
+    try:
+        return fuel[0]
+    except:
+        return 0
 
 
 def agent(observation, configuration):
@@ -109,12 +111,15 @@ def agent(observation, configuration):
     # actions.append(annotate.sidetext(str(resource_tiles)))
 
     # we iterate over all our units and do something with them
+
     for unit in player.units:
         actions.append(annotate.text(unit.pos.x, unit.pos.y,
                        f"left:{unit.get_cargo_space_left()}", 42))
         if unit.is_worker() and unit.can_act():
 
-            if unit.get_cargo_space_left() > 0:
+            lowFuel = get_city_lowes_fuel(player)
+
+            if unit.get_cargo_space_left() > 0 and lowFuel > 300:
 
                 closest_resource_tile = get_closest_resource_tile(
                     unit, resource_tiles, player)
@@ -124,7 +129,7 @@ def agent(observation, configuration):
 
             else:
                 # try build city
-                if get_city_lowes_fuel(player) > 300:
+                if lowFuel > 300:
                     closest_empty_tile = get_closes_empty_tile(
                         unit, empty_tiles, player)
                     actions.append(annotate.circle(
@@ -137,7 +142,7 @@ def agent(observation, configuration):
                         actions.append(unit.build_city())
 
                 # if unit is a worker and there is no cargo space left, and we have cities, lets return to them
-                if len(player.cities) > 0:
+                if len(player.cities) > 0 and lowFuel <= 300:
                     fuel = []
                     for k, city in player.cities.items():
                         fuel.append(city.fuel)
@@ -147,6 +152,7 @@ def agent(observation, configuration):
                     closest_city_tile = None
                     for k, city in player.cities.items():
                         for city_tile in city.citytiles:
+
                             if city.fuel == fuel[0]:
                                 dist = city_tile.pos.distance_to(unit.pos)
                                 if dist < closest_dist:
@@ -160,12 +166,14 @@ def agent(observation, configuration):
                     move_dir = unit.pos.direction_to(closest_city_tile.pos)
                     actions.append(unit.move(move_dir))
 
-    # for k, city in player.cities.items():
-    #     if city.fuel > 300:
-    #         for city_tile in city.citytiles:
-    #             actions.append(annotate.circle(city_tile.pos.x, city_tile.pos.y))
-    #             city_tile.build_worker()
-    # you can add debug annotations using the functions in the annotate object
-    # actions.append(annotate.circle(0, 0))
+    for k, city in player.cities.items():
+        for city_tile in city.citytiles:
+            if city_tile.can_act() and player.research_points < 50:
+                action = city_tile.research()
+                actions.append(action)
+
+            elif city_tile.can_act() and not player.research_points < 50:
+                action = city_tile.build_worker()
+                actions.append(action)
 
     return actions
